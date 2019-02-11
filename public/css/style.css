@@ -1,0 +1,11 @@
+.row .justify-content-md-center {
+    margin-top: 50px;
+}
+.container {
+    background-color: lightblue;
+    padding-bottom: 50px;
+}
+#title{
+    padding-left: 1.3rem;
+    padding-bottom:0;
+}
