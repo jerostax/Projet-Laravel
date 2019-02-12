@@ -4,18 +4,42 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
 
 <ul class="navbar-nav mr-auto">
-    <li class="nav-item ">
-        <a class="nav-link" href="{{url('/')}}">ACCUEIL</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">SOLDES</a>
-      </li>
-      @forelse($categories as $id => $title)
+    @if(Auth::check())
+          <li class="nav-item ">
+            <a class="nav-link" href="{{url('/')}}">RETOUR A L'ACCUEIL</a>
+          </li> 
+          <li class="nav-item">    
+            <a class="nav-link" href="{{route('maison.index')}}">DASHBOARD</a>
+          </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('maison.create')}}">AJOUTER UN PRODUIT</a>
+              </li>
+              <li class="nav-item">
+            <a class="nav-link" href="{{route('logout')}}"
+            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     LOGOUT
+                                                     </a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{csrf_field() }}
+            </form>
+            @else 
+              <li class="nav-item">
+                <a class="nav-link" href="{{url('/')}}">ACCUEIL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">SOLDES</a>
+              </li>
+              @forelse($categories as $id => $title)
       <li class="nav-item">
           <a class="nav-link" href="{{url('categorie', $id)}}">{{$title}}</a>
       </li>
       @empty 
                 <li>Aucun genre pour l'instant</li>
                 @endforelse
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('login')}}">LOGIN</a>
+          </li>
+            @endif
     </ul>
 </nav>

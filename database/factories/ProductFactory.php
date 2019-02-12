@@ -12,6 +12,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'reference' => $faker -> word(),
         'size' => $faker -> numberBetween($min = 1, $max = 4),
         'code' => $faker -> numberBetween($min = 1, $max = 2),
-        'price' => $faker -> numberBetween($min = 1, $max = 1000)
+        'price' => $faker -> numberBetween($min = 1, $max = 1000),
+        'status' => $faker -> numberBetween($min = 1, $max = 2)
     ];
 });

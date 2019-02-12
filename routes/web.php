@@ -17,3 +17,9 @@ Route::get('/', 'FrontController@index')->name('home');
 Route::get('product/{id}', 'FrontController@show')->where(['id' => '[0-9]+']);
 
 Route::get('categorie/{id}', 'FrontController@showProductByCat')->where(['id' => '[0-2]+']);
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('admin/maison', 'ProductController')->middleware('auth'); // middleware auth vérification d'un user authentifié
