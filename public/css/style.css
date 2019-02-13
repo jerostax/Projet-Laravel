@@ -2,8 +2,25 @@
     margin-top: 50px;
 }
 .container {
-    background-color: lightblue;
+    background-color: lightgrey;
     padding-bottom: 50px;
+}
+.col-md-12 {
+    padding-right:0;
+    padding-left:0;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:lightgrey;
+}
+.page-item.active .page-link {
+    background-color: darkgrey;
+    border-color: darkgrey;
+}
+.page-link {
+    color: darkgrey;
+}
+.page-link:hover {
+    color:black;
 }
 #title{
     padding-left: 1.3rem;
@@ -13,4 +30,16 @@
 .little{
     margin-bottom: 35%;
     padding-right: 10%;  
+}
+.col-3 {
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+.card  {
+    margin-left: 6.3%;
+    margin-bottom: 3%;
+}
+.select-size {
+    border-radius: 0.25rem;
 }

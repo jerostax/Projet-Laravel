@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<small><a href= '{{url('/')}}'> Boutique </a>> {{$categorie->title?? 'aucune catégorie'}}</small>
+<small><a href= '{{url('/')}}'> Boutique </a>> Solde</small>
 {{$products->links()}}
 <div class="container">
         @forelse($products as $product)
@@ -18,6 +18,7 @@
           </div>
           <div class="col col-lg-2">
                 <p class="card-text">{{$product->title}}</p>
+                <p class="card-text">{{$product->code}}</p>
                 <p><small class="text-muted">ref : {{$product->reference}}</small></p>
                 <p><small class="text-muted">{{$product->price}} €</small></p>
                 <form class="form-inline">

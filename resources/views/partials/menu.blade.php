@@ -1,7 +1,7 @@
-
+<div class="p-3 mb-2 bg-dark text-white">
 <h1 class="navbar-brand mb-0 h1" id='title'>Boutique La Maison</h1>
 
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-light">
 
 <ul class="navbar-nav mr-auto">
     @if(Auth::check())
@@ -28,14 +28,14 @@
                 <a class="nav-link" href="{{url('/')}}">ACCUEIL</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">SOLDES</a>
+                <a class="nav-link" href="{{url('solde', $product->id)}}">SOLDES</a>
               </li>
               @forelse($categories as $id => $title)
       <li class="nav-item">
           <a class="nav-link" href="{{url('categorie', $id)}}">{{$title}}</a>
       </li>
       @empty 
-                <li>Aucun genre pour l'instant</li>
+                <li>Aucune catégorie pour l'instant</li>
                 @endforelse
           <li class="nav-item">
             <a class="nav-link" href="{{route('login')}}">LOGIN</a>
@@ -43,3 +43,4 @@
             @endif
     </ul>
 </nav>
+</div>

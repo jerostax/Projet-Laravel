@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-select">
                       <label for="categorie">Catégorie</label>
-                      <select id="categorie" name="categorie_id">
+                      <select class='select-size' id="categorie" name="categorie_id">
                             <option value="0" {{ is_null($categorie->title)? 'selected' : '' }} >Pas de catégorie</option>
                             @foreach($categories as $id => $title)
                               <option {{ (!is_null($product->categorie) and $product->categorie->id == $id)? 'selected' : '' }} value="{{$id}}">{{$title}}</option>
@@ -31,19 +31,25 @@
                       </select>
                 </div>
                 <div class="form-select">
-                      <label for="size">Taille</label>
-                      <select id="size" name="size_id">
-                            <option value="0" {{ is_null($product->size)? 'selected' : '' }}>Pas de taille</option>
-                            @foreach($sizes as $id => $size)
-                              <option {{ (!is_null($product->size))? 'selected' : '' }} value="{{$id}}">{{$size}}</option>
-                            @endforeach
-                      </select>
-                </div>
+                        <label for="exampleFormControlInput1">Taille</label>
+                        <select class='select-size' name='size' id="inlineFormCustomSelectPref">
+                       <option  @if($product->size == '46') selected @endif value='46'> 46 </option>
+                       <option  @if($product->size == '48') selected @endif value='48'> 48 </option>
+                       <option  @if($product->size == '50') selected @endif value='50'> 50 </option>  
+                       <option  @if($product->size == '52') selected @endif value='52'> 52 </option>                                    
+                       </select>
+             </div>
                 <div class="form-group">
                       <label for="exampleFormControlFile1">Image</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" name="picture" class="form-control-file" id="exampleFormControlFile1">
                         @if($errors->has('picture')) <span class="error bg-warning text-warning">{{$errors->first('picture')}}</span> @endif
                 </div>
+                @if($product->url_image)
+            <div class="form-group">
+                  <h3>Image associée :<h3>
+            <img width="300" src="{{url('images', $product->url_image)}}" alt="">
+            </div>
+            @endif
                 <button type="submit" class="btn btn-primary">Modifier un produit</button>
               
             </div>
@@ -54,8 +60,8 @@
                         <label for="exampleFormControlInput1">Status</label>
                               <div class="col-sm-10">                                           
                                     <div class="form-check">
-                                      <input type="radio" @if($product->status == 'publié') checked @endif name="status" value="published" checked> publier<br>
-                                      <input type="radio" @if($product->status == 'brouillon') checked @endif name="status" value="unpublished" > brouillon<br>
+                                      <input type="radio" @if($product->status == 'Publié') checked @endif name="status" value="Publié" checked>Publier<br>
+                                      <input type="radio" @if($product->status == 'Brouillon') checked @endif name="status" value="Brouillon" > Brouillon<br>
                                       <label class="form-check-label" for="gridCheck1">
                                                 {{$status}}
                                       </label>
@@ -63,13 +69,11 @@
                                 </div>
                     </div>
                         <div class="form-select">
-                              <label for="code">Code produit</label>
-                                  <select id="code" name="code_id">
-                                        <option value="0" {{ is_null($product->code)? 'selected' : '' }}>Pas de code</option>
-                                        @foreach($code as $id => $code)
-                                          <option {{(!is_null($product->code))? 'selected' : '' }} value="{{$id}}">{{$code}}</option>
-                                        @endforeach
-                                  </select>
+                                    <label for="exampleFormControlInput1">Code</label>
+                                     <select name='code'class='select-size' id="inlineFormCustomSelectPref">
+                                    <option  @if($product->code == 'SOLDE') selected @endif value='SOLDE'> SOLDE </option>
+                                    <option  @if($product->code == 'NEW') selected @endif value='NEW'> NEW </option>                                  
+                                    </select>
                           </div>
                           <div class="form-group">
                                 <label for="exampleFormControlInput1">Référence produit</label>

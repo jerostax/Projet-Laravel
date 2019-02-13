@@ -30,18 +30,18 @@
                         </select>
                 </div>
                 <div class="form-select">
-                        <label for="size">Taille</label>
-                        <select id="size" name="size_id">
-                            <option value="0" {{ is_null(old('size_id'))? 'selected' : '' }}>Pas de taille</option>
-                            @foreach($sizes as $id => $size)
-                                <option {{ old('size_id')==$id? 'selected' : '' }} value="{{$id}}">{{$size}}</option>
-                            @endforeach
-                        </select>
-                </div>
+                    <label for="exampleFormControlInput1">Taille</label>
+                    <select class='select-size' name='size' id="inlineFormCustomSelectPref">
+                   <option  @if($product->size == '46') selected @endif value='46'> 46 </option>
+                   <option  @if($product->size == '48') selected @endif value='48'> 48 </option>
+                   <option  @if($product->size == '50') selected @endif value='50'> 50 </option>  
+                   <option  @if($product->size == '52') selected @endif value='52'> 52 </option>                                    
+                   </select>
+         </div>
                 <div class="form-group">
                         <label for="exampleFormControlFile1">Image</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        @if($errors->has('picture')) <span class="error bg-warning text-warning">{{$errors->first('picture')}}</span> @endif
+                        <input type="file" name="picture" class="form-control-file" id="exampleFormControlFile1">
+                        @if($errors->has('picture')) <span class="error bg-warning ">{{$errors->first('picture')}}</span> @endif
                       </div>
                 <button type="submit" class="btn btn-primary">Ajouter un produit</button>
               </form>
@@ -55,8 +55,8 @@
                                     <div class="col-sm-10">
                                     
                                       <div class="form-check">
-                                            <input type="radio" @if(old('status')=='published') checked @endif name="status" value="published" checked> publier<br>
-                                            <input type="radio" @if(old('status')=='unpublished') checked @endif name="status" value="unpublished" > brouillon<br>
+                                            <input type="radio" @if(old('status')=='Publié') checked @endif name="status" value="Publié" checked> publier<br>
+                                            <input type="radio" @if(old('status')=='Brouillon') checked @endif name="status" value="Brouillon" > brouillon<br>
                                         <label class="form-check-label" for="gridCheck1">
                                                 {{$status}}
                                         </label>
@@ -65,13 +65,11 @@
                                     </div>
                                   </div>
                                   <div class="form-select">
-                                    <label for="code">Code produit</label>
-                                    <select id="code" name="code_id">
-                                        <option value="0" {{ is_null(old('code_id'))? 'selected' : '' }}>Pas de code</option>
-                                        @foreach($code as $id => $code)
-                                            <option {{ old('code_id')==$id? 'selected' : '' }} value="{{$id}}">{{$code}}</option>
-                                        @endforeach
-                                    </select>
+                                      <label for="exampleFormControlInput1">Code</label>
+                                       <select name='code'class='select-size' id="inlineFormCustomSelectPref">
+                                      <option  @if($product->code == 'SOLDE') selected @endif value='SOLDE'> SOLDE </option>
+                                      <option  @if($product->code == 'NEW') selected @endif value='NEW'> NEW </option>                                  
+                                      </select>
                             </div>
                                       <div class="form-group">
                                             <label for="exampleFormControlInput1">Référence produit</label>

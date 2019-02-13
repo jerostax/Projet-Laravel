@@ -10,7 +10,7 @@
           </div>
           <div class="col-md-auto">
                 <div class="text-center">
-                        <img src="{{asset('images/'.$product->url_image)}}" class="rounded" alt="{{$product->title}}">
+                        <img src="{{asset('images/'.$product->url_image)}}" class="rounded" width='640'alt="{{$product->title}}">
                       </div>
           </div>
           <div class="col col-lg-2">
@@ -21,8 +21,6 @@
                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                     <option selected>Taille</option>
                     <option value="1">{{$product->size}}</option>
-                    <option value="2">{{$product->size}}</option>
-                    <option value="3">{{$product->size}}</option>
                     </select>
                 </form>
           </div>

@@ -2,6 +2,7 @@
 
 @section('content')
 {{$products->links()}}
+@include('back.maison.partials.flash')
 <table class="table table-striped">
 <thead>
         <tr>

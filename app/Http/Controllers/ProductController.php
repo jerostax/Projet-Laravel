@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate($this->paginate);
+        
 
         return view('back.maison.index', ['products' => $products]);
     }
@@ -54,12 +55,27 @@ class ProductController extends Controller
             'title' => 'required',
             'description' => 'required|string',
             'categorie_id' => 'integer',
+            'url_image' => 'image|max:3000',
+            'code' => 'in:SOLDE,NEW',
             //'authors.*' => 'integer', // pour vérifier un tableau d'entiers il faut mettre authors.*
             //'status' => 'in:published,unpublished',
             //'title_image' => 'string|nullable', // pour le titre de l'image si il existe
             //'picture' => 'image|max:3000',
         ]);
         $product = Product::create($request->all());
+
+       $im = $request->file('picture');
+        if (!empty($im)) {
+            
+            $link = $request->file('picture')->store('images');
+
+            // mettre à jour la table picture pour le lien vers l'image dans la base de données
+            $product->update([
+                'url_image' => $link,
+            ]);
+        }
+
+
 
         return redirect()->route('maison.index')->with('message', 'Succès');
     }
@@ -106,11 +122,24 @@ class ProductController extends Controller
             'title' => 'required',
             'description' => 'required|string',
             'categorie_id' => 'integer',
+            'url_image' => 'image|max:3000',
+            'code' => 'in:SOLDE,NEW',
             //'authors.*' => 'integer', // pour vérifier un tableau d'entiers il faut mettre authors.*
             //'status' => 'in:published,unpublished'
         ]);
         $product = Product::find($id);
         $product->update($request->all());
+
+        $im = $request->file('picture');
+        if (!empty($im)) {
+            
+            $link = $request->file('picture')->store('images');
+
+            // mettre à jour la table picture pour le lien vers l'image dans la base de données
+            $product->update([
+                'url_image' => $link,
+            ]);
+        }
 
         return redirect()->route('maison.index')->with('message', 'Succès');
     }
@@ -130,3 +159,8 @@ class ProductController extends Controller
         return redirect()->route('maison.index')->with('message', 'Supprimé avec panache!');
     }
 }
+
+
+
+// $books = Product::where('title', $id)-get();
+//  return view ('index', ['books' => $books]);
