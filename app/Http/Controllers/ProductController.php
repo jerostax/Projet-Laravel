@@ -32,14 +32,9 @@ class ProductController extends Controller
     public function create()
     {
         {
-            // permet de récupérer une collection type array avec une clé id => name
-            $codes = Product::pluck('code', 'id')->all();
             $categories = Categorie::pluck('title', 'id')->all();
-            $sizes = Product::pluck('size', 'id')->all();
-            $status = Product::pluck('status', 'id')->all();
-            
-    
-            return view('back.maison.create', ['products' => $codes, 'categories' => $categories, 'sizes' => $sizes, 'status' => $status, 'code' => $codes]);
+
+            return view('back.maison.create', ['categories' => $categories]);
         }
     }
 
@@ -56,12 +51,9 @@ class ProductController extends Controller
             'description' => 'required|string',
             'categorie_id' => 'integer',
             'url_image' => 'image|max:3000',
-            'code' => 'in:SOLDE,NEW',
-            //'authors.*' => 'integer', // pour vérifier un tableau d'entiers il faut mettre authors.*
-            //'status' => 'in:published,unpublished',
-            //'title_image' => 'string|nullable', // pour le titre de l'image si il existe
-            //'picture' => 'image|max:3000',
+            'code' => 'in:SOLDE,NEW',          
         ]);
+
         $product = Product::create($request->all());
 
        $im = $request->file('picture');
@@ -69,7 +61,6 @@ class ProductController extends Controller
             
             $link = $request->file('picture')->store('images');
 
-            // mettre à jour la table picture pour le lien vers l'image dans la base de données
             $product->update([
                 'url_image' => $link,
             ]);
@@ -102,8 +93,6 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-
-       // $prices = Product::pluck('price', 'id')->all();
         $categories = Categorie::pluck('title', 'id')->all();
 
         return view('back.maison.edit', compact('product', 'categories'));
@@ -124,8 +113,6 @@ class ProductController extends Controller
             'categorie_id' => 'integer',
             'url_image' => 'image|max:3000',
             'code' => 'in:SOLDE,NEW',
-            //'authors.*' => 'integer', // pour vérifier un tableau d'entiers il faut mettre authors.*
-            //'status' => 'in:published,unpublished'
         ]);
         $product = Product::find($id);
         $product->update($request->all());
@@ -135,7 +122,6 @@ class ProductController extends Controller
             
             $link = $request->file('picture')->store('images');
 
-            // mettre à jour la table picture pour le lien vers l'image dans la base de données
             $product->update([
                 'url_image' => $link,
             ]);
@@ -160,7 +146,3 @@ class ProductController extends Controller
     }
 }
 
-
-
-// $books = Product::where('title', $id)-get();
-//  return view ('index', ['books' => $books]);

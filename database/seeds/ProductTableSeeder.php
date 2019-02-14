@@ -23,7 +23,7 @@ class ProductTableSeeder extends Seeder
             Storage::disk('local')->delete(Storage::allFiles());
 
             //Création de 30 produits à partir de la factory
-            factory(App\Product::class, 10)->create()->each(function($product){
+            factory(App\Product::class, 50)->create()->each(function($product){
                 //associons une catégorie à un produit que nous venons de créer
                 $categorie = App\Categorie::find(rand(1,2));
 

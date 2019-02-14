@@ -42,7 +42,7 @@
                 <div class="form-group">
                       <label for="exampleFormControlFile1">Image</label>
                         <input type="file" name="picture" class="form-control-file" id="exampleFormControlFile1">
-                        @if($errors->has('picture')) <span class="error bg-warning text-warning">{{$errors->first('picture')}}</span> @endif
+                        @if($errors->has('picture')) <span class="error bg-warning">{{$errors->first('picture')}}</span> @endif
                 </div>
                 @if($product->url_image)
             <div class="form-group">

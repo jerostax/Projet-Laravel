@@ -3,37 +3,21 @@
 @section('content')
 <small><a href= '{{url('/')}}'> Boutique </a>> {{$categorie->title?? 'aucune catégorie'}}</small>
 {{$products->links()}}
-<div class="container">
-        @forelse($products as $product)
-        <div class="row justify-content-md-center">
-          <div class="col col-lg-2">
-            <img src="{{asset('images/'.$product->url_image)}}" class="little" width="180" alt="{{$product->title}}">
-            <img src="{{asset('images/'.$product->url_image)}}" class="little" width="180" alt="{{$product->title}}">
-            <img src="{{asset('images/'.$product->url_image)}}" class="little" width="180" alt="{{$product->title}}">
-          </div>
-          <div class="col-md-auto">
-                <div class="text-center">
-                        <img src="{{asset('images/'.$product->url_image)}}" class="rounded" width='640'alt="{{$product->title}}">
-                      </div>
-          </div>
-          <div class="col col-lg-2">
-                <p class="card-text">{{$product->title}}</p>
-                <p><small class="text-muted">ref : {{$product->reference}}</small></p>
-                <p><small class="text-muted">{{$product->price}} €</small></p>
-                <form class="form-inline">
-                  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  <option selected>Taille</option>
-                  <option value="1">{{$product->size}}</option>
-                  <option value="2">{{$product->size}}</option>
-                  <option value="3">{{$product->size}}</option>
-                  </select>
-              </form>
-          </div>
+<p class="text-right">{{$categorie->title}} : {{$count}} résultats</p>
+<div class="row">
+  @forelse($products as $product)
+  <div class="card col-3"><a href="{{url('product', $product->id)}}">
+        <img src="{{asset('images/'.$product->url_image)}}" class="card-img-top" alt="{{$product->title}}">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{{url('product', $product->id)}}">{{$product->title}}</a></h5>
+          <p class="card-text"><small class="text-muted">Code : {{$product->code}} </small></p>
+          <p class="card-text"><small class="text-muted">Prix : {{$product->price}} €</small></p>
+          <p class="card-text">{{$categorie->title}}</p>
         </div>
-        <h3>Description :</h3>
-    <p>{{$product->description}}
-        @empty
-<p>Désolé pour l'instant aucun produit n'est publié sur le site</p>
+  </div></a>
+      @empty
+      <p>Désolé pour l'instant aucun produit n'est publié sur le site</p>
 @endforelse
-    </div>
-@endsection
+</div>
+ 
+@endsection 

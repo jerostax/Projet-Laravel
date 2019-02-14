@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 6, 2)->nullable();
             $table->enum('size', [46, 48, 50, 52]);
             $table->string('url_image', 100);
-            $table->enum('status', ['Publié', 'Brouillon'])->default('Brouillon');
-            $table->enum('code', ['SOLDE', 'NEW'])->default('SOLDE');
+            $table->enum('status', ['Publié', 'Brouillon']);//->default('Brouillon');
+            $table->enum('code', ['SOLDE', 'NEW']);//->default('SOLDE');
             $table->string('reference', 100)->nullable();
             $table->timestamps();
         });

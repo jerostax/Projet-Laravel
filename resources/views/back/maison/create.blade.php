@@ -44,11 +44,9 @@
                         @if($errors->has('picture')) <span class="error bg-warning ">{{$errors->first('picture')}}</span> @endif
                       </div>
                 <button type="submit" class="btn btn-primary">Ajouter un produit</button>
-              </form>
             </div>
 
-            <div class="col-md-6">
-                    <form>
+            <div class="col-md-6">              
                             <div class="form-group row">
                                     
                                     <label for="exampleFormControlInput1">Status</label>
@@ -67,8 +65,8 @@
                                   <div class="form-select">
                                       <label for="exampleFormControlInput1">Code</label>
                                        <select name='code'class='select-size' id="inlineFormCustomSelectPref">
-                                      <option  @if($product->code == 'SOLDE') selected @endif value='SOLDE'> SOLDE </option>
-                                      <option  @if($product->code == 'NEW') selected @endif value='NEW'> NEW </option>                                  
+                                      <option  @if(old('code')=='SOLDE') selected @endif value='SOLDE'> SOLDE </option>
+                                      <option  @if(old('code')=='NEW') selected @endif value='NEW'> NEW </option>                                  
                                       </select>
                             </div>
                                       <div class="form-group">

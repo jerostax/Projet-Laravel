@@ -24,6 +24,7 @@
                                         {{csrf_field() }}
             </form>
             @else 
+           
               <li class="nav-item">
                 <a class="nav-link" href="{{url('/')}}">ACCUEIL</a>
               </li>
@@ -40,6 +41,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('login')}}">LOGIN</a>
           </li>
+        
             @endif
     </ul>
 </nav>

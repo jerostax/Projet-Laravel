@@ -2,7 +2,7 @@
 
 @section('content')
 {{$products->links()}}
-<p>Produit: {{$count}}</p>
+<p class="text-right">BOUTIQUE : {{$count}} résultats</p>
 <div class="row">
   @forelse($products as $product)
   <div class="card col-3"><a href="{{url('product', $product->id)}}">
