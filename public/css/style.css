@@ -1,8 +1,13 @@
+
+#menu {
+    background: linear-gradient(#29343D, #B0B4B7);
+    border-bottom: 1px solid #999EA3;
+}
 .row .justify-content-md-center {
-    margin-top: 50px;
+    margin-top: 50px;   
 }
 .container {
-    background-color: lightgrey;
+    background-color: #D6D8DA;
     padding-bottom: 50px;
 }
 .col-md-12 {
@@ -28,7 +33,7 @@
     font-size: 2em;
 }
 .little{
-    margin-bottom: 35%;
+    margin-bottom: 45%;
     padding-right: 10%;  
 }
 .col-3 {
@@ -45,4 +50,7 @@
 }
 .text-right {
     margin-right: 5%;
-}
+};
+
+
+

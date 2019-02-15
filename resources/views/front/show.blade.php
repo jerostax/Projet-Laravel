@@ -16,7 +16,12 @@
           <div class="col col-lg-2">
                 <p class="card-text">{{$product->title}}</p>
                 <p><small class="text-muted">ref : {{$product->reference}}</small></p>
-                <p><small class="text-muted">{{$product->price}} €</small></p>
+                @if ($product->code === 'SOLDE')
+          <p class="card-text" style="color:red;text-decoration: line-through"><small class="text-muted">Prix : {{$product->price}} €</small></p>
+          <span style='color:green; font-weight:bold'> @php echo number_format($product->price*0.8, 2)@endphp € <small style='color:red;font-weight:bold; border:3px solid yellow; background-color:yellow; border-radius:10px;margin-left:5%;'>-20% !!</small></span>
+          @else 
+          <p class="card-text"><small class="text-muted" style='font-weight:bold'>Prix : {{$product->price}} €</small></p>
+          @endif
                 <form class="form-inline">
                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                     <option selected>Taille</option>
@@ -24,8 +29,10 @@
                     </select>
                 </form>
           </div>
+          <div style= "text-align:center"> 
+            <h3>Description :</h3>
+        <p>{{$product->description}}
+        </div>
         </div>
     </div>
-    <h3>Description :</h3>
-    <p>{{$product->description}}
 @endsection

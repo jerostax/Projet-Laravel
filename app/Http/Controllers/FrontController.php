@@ -21,7 +21,7 @@ class FrontController extends Controller
     }
 
     public function index(){
-        $products = Product::published()->paginate($this->paginate);
+        $products = Product::published()->orderBy('created_at', 'desc')->paginate($this->paginate);
         $count = Product::published()->count();
 
         return view('front.index', ['products' => $products, 'count' => $count]);

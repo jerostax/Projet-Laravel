@@ -20,8 +20,12 @@
                     <td><a href="{{route('maison.edit', $product->id)}}">{{$product->title}}</a></td>
                     <td>{{$product->categorie->title?? 'aucune catégorie' }}</td>
                     <td>{{$product->price}}</td>
-                    <td >{{$product->status}}</td>
-                    <td><a class="btn btn-warning" href="{{route('maison.edit', $product->id)}}">Mettre à jour</a></td>
+                    <td > @if($product->status == 'Publié')
+                        <button type="button" class="btn btn-success">Publié</button>
+                        @else 
+                        <button type="button" class="btn btn-warning">Brouillon</button>
+                        @endif</td>
+                    <td><a class="btn btn-primary" href="{{route('maison.edit', $product->id)}}">Mettre à jour</a></td>
                     <td>
                             <form class="delete" method="POST" action="{{route('maison.destroy', $product->id)}}">
                                 {{ method_field('DELETE') }}

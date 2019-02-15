@@ -19,6 +19,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Prix</label>
                     <input name="price" value="{{old('price')}}"type="text" class="form-control" id="exampleFormControlInput1" placeholder="Prix">
+                    @if($errors->has('price')) <span class="error bg-warning ">{{$errors->first('price')}}</span>@endif
                 </div>
                 <div class="form-select">
                         <label for="categorie">Catégorie</label>
@@ -37,12 +38,12 @@
                    <option  @if($product->size == '50') selected @endif value='50'> 50 </option>  
                    <option  @if($product->size == '52') selected @endif value='52'> 52 </option>                                    
                    </select>
-         </div>
+                </div>
                 <div class="form-group">
                         <label for="exampleFormControlFile1">Image</label>
                         <input type="file" name="picture" class="form-control-file" id="exampleFormControlFile1">
                         @if($errors->has('picture')) <span class="error bg-warning ">{{$errors->first('picture')}}</span> @endif
-                      </div>
+                </div>
                 <button type="submit" class="btn btn-primary">Ajouter un produit</button>
             </div>
 
@@ -61,19 +62,19 @@
                                       </div>
                                      
                                     </div>
-                                  </div>
-                                  <div class="form-select">
+                            </div>
+                            <div class="form-select">
                                       <label for="exampleFormControlInput1">Code</label>
                                        <select name='code'class='select-size' id="inlineFormCustomSelectPref">
                                       <option  @if(old('code')=='SOLDE') selected @endif value='SOLDE'> SOLDE </option>
                                       <option  @if(old('code')=='NEW') selected @endif value='NEW'> NEW </option>                                  
                                       </select>
                             </div>
-                                      <div class="form-group">
+                            <div class="form-group">
                                             <label for="exampleFormControlInput1">Référence produit</label>
                                             <input type="text" name="reference" value="{{old('reference')}}" class="form-control" id="exampleFormControlInput1" placeholder="Référence du produit">
-                                            @if($errors->has('reference')) <span class="error bg-warning text-warning">{{$errors->first('reference')}}</span>@endif
-                                          </div>
+                                            @if($errors->has('reference')) <span class="error bg-warning">{{$errors->first('reference')}}</span>@endif
+                              </div>
                           </form>
                         </div>
                     </div>

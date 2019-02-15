@@ -1,5 +1,5 @@
 @if(Session::has('message'))
 <div class="alert">
-    <p>{{Session::get('message')}}</p>
+    <p class='btn btn-success'>{{Session::get('message')}}</p>
 </div>
 @endif

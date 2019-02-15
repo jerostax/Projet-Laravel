@@ -18,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate($this->paginate);
+        $products = Product::orderBy('created_at', 'desc')->paginate($this->paginate);
+        
         
 
         return view('back.maison.index', ['products' => $products]);
@@ -51,7 +52,9 @@ class ProductController extends Controller
             'description' => 'required|string',
             'categorie_id' => 'integer',
             'url_image' => 'image|max:3000',
-            'code' => 'in:SOLDE,NEW',          
+            'code' => 'in:SOLDE,NEW', 
+            'price' => 'required',
+            'reference' => 'required',         
         ]);
 
         $product = Product::create($request->all());
@@ -68,7 +71,7 @@ class ProductController extends Controller
 
 
 
-        return redirect()->route('maison.index')->with('message', 'Succès');
+        return redirect()->route('maison.index')->with('message', 'Nouvel article créé avec succès !');
     }
 
     /**
@@ -113,6 +116,8 @@ class ProductController extends Controller
             'categorie_id' => 'integer',
             'url_image' => 'image|max:3000',
             'code' => 'in:SOLDE,NEW',
+            'price' => 'required',
+            'reference' => 'required', 
         ]);
         $product = Product::find($id);
         $product->update($request->all());
@@ -127,7 +132,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->route('maison.index')->with('message', 'Succès');
+        return redirect()->route('maison.index')->with('message', 'Modifié avec succès !');
     }
 
     /**
@@ -142,7 +147,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('maison.index')->with('message', 'Supprimé avec panache!');
+        return redirect()->route('maison.index')->with('message', 'Supprimé sans sommation !');
     }
 }
 

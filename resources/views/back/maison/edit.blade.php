@@ -10,16 +10,17 @@
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Titre</label>
                   <input type="text" name="title" value="{{$product->title}}" class="form-control" id="exampleFormControlInput1" placeholder="Titre du produit">
-                  @if($errors->has('title')) <span class="error bg-warning text-warning">{{$errors->first('title')}}</span>@endif
+                  @if($errors->has('title')) <span class="error bg-warning">{{$errors->first('title')}}</span>@endif
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Description</label>
                     <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"placeholder="Description">{{$product->description}}</textarea>
-                     @if($errors->has('description')) <span class="error bg-warning text-warning">{{$errors->first('description')}}</span> @endif
+                     @if($errors->has('description')) <span class="error bg-warning">{{$errors->first('description')}}</span> @endif
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Prix</label>
                     <input name="price" value="{{$product->price}}"type="text" class="form-control" id="exampleFormControlInput1" placeholder="Prix">
+                    @if($errors->has('price')) <span class="error bg-warning">{{$errors->first('price')}}</span>@endif
                 </div>
                 <div class="form-select">
                       <label for="categorie">Catégorie</label>
@@ -44,42 +45,37 @@
                         <input type="file" name="picture" class="form-control-file" id="exampleFormControlFile1">
                         @if($errors->has('picture')) <span class="error bg-warning">{{$errors->first('picture')}}</span> @endif
                 </div>
-                @if($product->url_image)
-            <div class="form-group">
-                  <h3>Image associée :<h3>
-            <img width="300" src="{{url('images', $product->url_image)}}" alt="">
-            </div>
-            @endif
                 <button type="submit" class="btn btn-primary">Modifier un produit</button>
-              
             </div>
 
-            <div class="col-md-6">
-                   
+            <div class="col-md-6"> 
                   <div class="form-group row">                                    
                         <label for="exampleFormControlInput1">Status</label>
                               <div class="col-sm-10">                                           
                                     <div class="form-check">
                                       <input type="radio" @if($product->status == 'Publié') checked @endif name="status" value="Publié" checked>Publier<br>
                                       <input type="radio" @if($product->status == 'Brouillon') checked @endif name="status" value="Brouillon" > Brouillon<br>
-                                      <label class="form-check-label" for="gridCheck1">
-                                                {{$status}}
-                                      </label>
                                     </div>                                    
                                 </div>
-                    </div>
-                        <div class="form-select">
-                                    <label for="exampleFormControlInput1">Code</label>
-                                     <select name='code'class='select-size' id="inlineFormCustomSelectPref">
-                                    <option  @if($product->code == 'SOLDE') selected @endif value='SOLDE'> SOLDE </option>
-                                    <option  @if($product->code == 'NEW') selected @endif value='NEW'> NEW </option>                                  
-                                    </select>
-                          </div>
-                          <div class="form-group">
-                                <label for="exampleFormControlInput1">Référence produit</label>
-                                      <input type="text" name="reference" value="{{$product->reference}}" class="form-control" id="exampleFormControlInput1" placeholder="Référence du produit">
-                                      @if($errors->has('reference')) <span class="error bg-warning text-warning">{{$errors->first('reference')}}</span>@endif
-                    </div>
+                  </div>
+                  <div class="form-select">
+                        <label for="exampleFormControlInput1">Code</label>
+                              <select name='code'class='select-size' id="inlineFormCustomSelectPref">
+                              <option  @if($product->code == 'SOLDE') selected @endif value='SOLDE'> SOLDE </option>
+                              <option  @if($product->code == 'NEW') selected @endif value='NEW'> NEW </option>                                  
+                              </select>
+                  </div>
+                  <div class="form-group">
+                              <label for="exampleFormControlInput1">Référence produit</label>
+                              <input type="text" name="reference" value="{{$product->reference}}" class="form-control" id="exampleFormControlInput1" placeholder="Référence du produit">
+                              @if($errors->has('reference')) <span class="error bg-warning">{{$errors->first('reference')}}</span>@endif
+                  </div>
+                    @if($product->url_image)
+                  <div class="form-group">
+                            <h3>Image associée :<h3>
+                            <img width="300" src="{{url('images', $product->url_image)}}" alt="">
+                  </div>
+                    @endif
               </form>
           </div>
       </div>

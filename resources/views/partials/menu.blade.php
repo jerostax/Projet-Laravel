@@ -1,9 +1,9 @@
-<div class="p-3 mb-2 bg-dark text-white">
+<div class="p-3 mb-2 text-white" id='menu'>
 <h1 class="navbar-brand mb-0 h1" id='title'>Boutique La Maison</h1>
 
 <nav class="navbar navbar-expand-lg navbar-light">
 
-<ul class="navbar-nav mr-auto">
+<ul id='myDIV' class="navbar-nav mr-auto">
     @if(Auth::check())
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/')}}">RETOUR A L'ACCUEIL</a>
