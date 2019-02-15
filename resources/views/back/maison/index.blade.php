@@ -21,9 +21,9 @@
                     <td>{{$product->categorie->title?? 'aucune catégorie' }}</td>
                     <td>{{$product->price}}</td>
                     <td > @if($product->status == 'Publié')
-                        <button type="button" class="btn btn-success">Publié</button>
+                        <span style='color:green'>Publié</bspan>
                         @else 
-                        <button type="button" class="btn btn-warning">Brouillon</button>
+                        <span style='color:red'>Brouillon</span>
                         @endif</td>
                     <td><a class="btn btn-primary" href="{{route('maison.edit', $product->id)}}">Mettre à jour</a></td>
                     <td>
